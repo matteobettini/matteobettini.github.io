@@ -74,16 +74,28 @@ Highlight your code snippets, take notes on math classes, and draw diagrams from
 <div class="navbar-collapse main-menu-item collapse justify-content-start" id=navbar-content>
 <ul class="navbar-nav d-md-inline-flex">
 <li class=nav-item>
+<a class=nav-link href=/#experience><span>Experience</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#accomplishments><span>Accomplishments</span></a>
+</li>
+<li class=nav-item>
 <a class=nav-link href=/#posts><span>Posts</span></a>
 </li>
 <li class=nav-item>
 <a class=nav-link href=/#projects><span>Projects</span></a>
 </li>
 <li class=nav-item>
+<a class=nav-link href=/#gallery><span>Gallery</span></a>
+</li>
+<li class=nav-item>
 <a class=nav-link href=/#talks><span>Talks</span></a>
 </li>
 <li class=nav-item>
 <a class=nav-link href=/#featured><span>Publications</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#tags><span>Topics</span></a>
 </li>
 <li class=nav-item>
 <a class=nav-link href=/#contact><span>Contact</span></a>
@@ -157,28 +169,34 @@ data.head()
 <p>Academic supports the popular <a href=https://plot.ly/ target=_blank rel=noopener>Plotly</a> chart format.</p>
 <p>Save your Plotly JSON in your page folder, for example <code>chart.json</code>, and then add the <code>{{&lt; chart data="chart" >}}</code> shortcode where you would like the chart to appear.</p>
 <p>Demo:</p>
-<div id=chart-439875216 class=chart></div>
-<script>(function(){let a=setInterval(function(){if(typeof window.Plotly=='undefined')return;clearInterval(a),Plotly.d3.json("./line-chart.json",function(a){Plotly.plot('chart-439875216',a.data,a.layout,{responsive:!0})})},500)})()</script>
+<div id=chart-415382796 class=chart></div>
+<script>(function(){let a=setInterval(function(){if(typeof window.Plotly=='undefined')return;clearInterval(a),Plotly.d3.json("./line-chart.json",function(a){Plotly.plot('chart-415382796',a.data,a.layout,{responsive:!0})})},500)})()</script>
 <p>You might also find the <a href=http://plotly-json-editor.getforge.io/ target=_blank rel=noopener>Plotly JSON Editor</a> useful.</p>
 <h3 id=math>Math</h3>
 <p>Academic supports a Markdown extension for $\LaTeX$ math. You can enable this feature by toggling the <code>math</code> option in your <code>config/_default/params.toml</code> file.</p>
 <p>To render <em>inline</em> or <em>block</em> math, wrap your LaTeX math with <code>$...$</code> or <code>$$...$$</code>, respectively.</p>
 <p>Example <strong>math block</strong>:</p>
-<pre><code class=language-latex>$$\gamma_{n} = \frac{ 
+<pre><code class=language-latex>$$ \gamma_{n} = \frac{ 
 \left | \left (\mathbf x_{n} - \mathbf x_{n-1} \right )^T 
 \left [\nabla F (\mathbf x_{n}) - \nabla F (\mathbf x_{n-1}) \right ] \right |}
-{\left \|\nabla F(\mathbf{x}_{n}) - \nabla F(\mathbf{x}_{n-1}) \right \|^2}$$
+{\left \|\nabla F(\mathbf{x}_{n}) - \nabla F(\mathbf{x}_{n-1}) \right \|^2 
+$$
 </code></pre>
 <p>renders as</p>
-<p>$$\gamma_{n} = \frac{ \left | \left (\mathbf x_{n} - \mathbf x_{n-1} \right )^T \left [\nabla F (\mathbf x_{n}) - \nabla F (\mathbf x_{n-1}) \right ] \right |}{\left |\nabla F(\mathbf{x}<em>{n}) - \nabla F(\mathbf{x}</em>{n-1}) \right |^2}$$</p>
+<p>$$ y = x $$</p>
+<div>
+$$ \gamma_{n} = \frac{ \left | \left (\mathbf x_{n} - \mathbf x_{n-1} \right )^T \left [\nabla F (\mathbf x_{n}) - \nabla F (\mathbf x_{n-1}) \right ] \right |}{\left \|\nabla F(\mathbf{x}_{n}) - \nabla F(\mathbf{x}_{n-1}) \right \|^2} $$
+</div>
 <p>Example <strong>inline math</strong> <code>$\nabla F(\mathbf{x}_{n})$</code> renders as $\nabla F(\mathbf{x}_{n})$.</p>
 <p>Example <strong>multi-line math</strong> using the <code>\\\\</code> math linebreak:</p>
 <pre><code class=language-latex>$$f(k;p_{0}^{*}) = \begin{cases}p_{0}^{*} &amp; \text{if }k=1, \\\\
 1-p_{0}^{*} &amp; \text{if }k=0.\end{cases}$$
 </code></pre>
 <p>renders as</p>
-<p>$$f(k;p_{0}^{<em>}) = \begin{cases}p_{0}^{</em>} & \text{if }k=1, \\
-1-p_{0}^{*} & \text{if }k=0.\end{cases}$$</p>
+<div>
+$$f(k;p_{0}^{*}) = \begin{cases}p_{0}^{*} & \text{if }k=1, \\\\
+1-p_{0}^{*} & \text{if }k=0.\end{cases}$$
+</div>
 <h3 id=diagrams>Diagrams</h3>
 <p>Academic supports a Markdown extension for diagrams. You can enable this feature by toggling the <code>diagram</code> option in your <code>config/_default/params.toml</code> file or by adding <code>diagram: true</code> to your page front matter.</p>
 <p>An example <strong>flowchart</strong>:</p>
@@ -415,7 +433,7 @@ You found me!
 <div class=media-body>
 <h5 class=card-title><a href=https://matteobettini.github.io/>Matteo Bettini</a></h5>
 <h6 class=card-subtitle>PhD Candidate</h6>
-<p class=card-text>My research is focused on studying cooperation and resilience multi-agent and multi-robot systems.</p>
+<p class=card-text>My research is focused on studying cooperation and resilience in multi-agent and multi-robot systems.</p>
 <ul class=network-icon aria-hidden=true>
 <li>
 <a href=/#contact>
