@@ -73,7 +73,7 @@ data.head()
 &lt;p>Academic supports the popular &lt;a href="https://plot.ly/" target="_blank" rel="noopener">Plotly&lt;/a> chart format.&lt;/p>
 &lt;p>Save your Plotly JSON in your page folder, for example &lt;code>chart.json&lt;/code>, and then add the &lt;code>{{&amp;lt; chart data=&amp;quot;chart&amp;quot; &amp;gt;}}&lt;/code> shortcode where you would like the chart to appear.&lt;/p>
 &lt;p>Demo:&lt;/p>
-&lt;div id="chart-576189234" class="chart">&lt;/div>
+&lt;div id="chart-342658179" class="chart">&lt;/div>
 &lt;script>
 (function() {
 let a = setInterval( function() {
@@ -82,7 +82,7 @@ return;
 }
 clearInterval( a );
 Plotly.d3.json("./line-chart.json", function(chart) {
-Plotly.plot('chart-576189234', chart.data, chart.layout, {responsive: true});
+Plotly.plot('chart-342658179', chart.data, chart.layout, {responsive: true});
 });
 }, 500 );
 })();
@@ -311,12 +311,7 @@ You found me!
 &lt;h3 id="did-you-find-this-page-helpful-consider-sharing-it-">Did you find this page helpful? Consider sharing it 🙌&lt;/h3></description></item><item><title>Display Jupyter Notebooks with Academic</title><link>https://matteobettini.github.io/post/jupyter/</link><pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/post/jupyter/</guid><description>&lt;pre>&lt;code class="language-python">from IPython.core.display import Image
 Image('https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png')
 &lt;/code>&lt;/pre>
-&lt;p>
-&lt;figure >
-&lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./index_1_0.png" alt="png" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>
-&lt;/p>
+&lt;p>&lt;img src="./index_1_0.png" alt="png">&lt;/p>
 &lt;pre>&lt;code class="language-python">print(&amp;quot;Welcome to Academic!&amp;quot;)
 &lt;/code>&lt;/pre>
 &lt;pre>&lt;code>Welcome to Academic!
