@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Matteo Bettini</title><link>https://matteobettini.github.io/</link><atom:link href="https://matteobettini.github.io/index.xml" rel="self" type="application/rss+xml"/><description>Matteo Bettini</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate><image><url>https://matteobettini.github.io/media/icon_hueab793ca17b85ea7e4569d22d387be97_25680_512x512_fill_lanczos_center_3.png</url><title>Matteo Bettini</title><link>https://matteobettini.github.io/</link></image><item><title>Python basics</title><link>https://matteobettini.github.io/courses/example/python/</link><pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/courses/example/python/</guid><description>&lt;p>Build a foundation in Python.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Matteo Bettini</title><link>https://matteobettini.github.io/</link><atom:link href="https://matteobettini.github.io/index.xml" rel="self" type="application/rss+xml"/><description>Matteo Bettini</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate><image><url>https://matteobettini.github.io/media/icon_huab30f8deea6e13588c445a06797a89e5_102170_512x512_fill_lanczos_center_3.png</url><title>Matteo Bettini</title><link>https://matteobettini.github.io/</link></image><item><title>Python basics</title><link>https://matteobettini.github.io/courses/example/python/</link><pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/courses/example/python/</guid><description>&lt;p>Build a foundation in Python.&lt;/p>
 &lt;p>
 &lt;i class="fas fa-clock pr-1 fa-fw">&lt;/i> 1-2 hours per week, for 8 weeks&lt;/p>
 &lt;h2 id="learn">Learn&lt;/h2>
@@ -150,7 +150,7 @@ data.head()
 &lt;p>Academic supports the popular &lt;a href="https://plot.ly/" target="_blank" rel="noopener">Plotly&lt;/a> chart format.&lt;/p>
 &lt;p>Save your Plotly JSON in your page folder, for example &lt;code>chart.json&lt;/code>, and then add the &lt;code>{{&amp;lt; chart data=&amp;quot;chart&amp;quot; &amp;gt;}}&lt;/code> shortcode where you would like the chart to appear.&lt;/p>
 &lt;p>Demo:&lt;/p>
-&lt;div id="chart-785146329" class="chart">&lt;/div>
+&lt;div id="chart-458726913" class="chart">&lt;/div>
 &lt;script>
 (function() {
 let a = setInterval( function() {
@@ -159,7 +159,7 @@ return;
 }
 clearInterval( a );
 Plotly.d3.json("./line-chart.json", function(chart) {
-Plotly.plot('chart-785146329', chart.data, chart.layout, {responsive: true});
+Plotly.plot('chart-458726913', chart.data, chart.layout, {responsive: true});
 });
 }, 500 );
 })();
