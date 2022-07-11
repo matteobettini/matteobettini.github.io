@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Matteo Bettini</title><link>https://matteobettini.github.io/</link><atom:link href="https://matteobettini.github.io/index.xml" rel="self" type="application/rss+xml"/><description>Matteo Bettini</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate><image><url>https://matteobettini.github.io/media/icon_huab30f8deea6e13588c445a06797a89e5_102170_512x512_fill_lanczos_center_3.png</url><title>Matteo Bettini</title><link>https://matteobettini.github.io/</link></image><item><title>Python basics</title><link>https://matteobettini.github.io/courses/example/python/</link><pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/courses/example/python/</guid><description>&lt;p>Build a foundation in Python.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Matteo Bettini</title><link>https://matteobettini.github.io/</link><atom:link href="https://matteobettini.github.io/index.xml" rel="self" type="application/rss+xml"/><description>Matteo Bettini</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate><image><url>https://matteobettini.github.io/media/icon_hueab793ca17b85ea7e4569d22d387be97_25680_512x512_fill_lanczos_center_3.png</url><title>Matteo Bettini</title><link>https://matteobettini.github.io/</link></image><item><title>Python basics</title><link>https://matteobettini.github.io/courses/example/python/</link><pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/courses/example/python/</guid><description>&lt;p>Build a foundation in Python.&lt;/p>
 &lt;p>
 &lt;i class="fas fa-clock pr-1 fa-fw">&lt;/i> 1-2 hours per week, for 8 weeks&lt;/p>
 &lt;h2 id="learn">Learn&lt;/h2>
@@ -75,7 +75,19 @@ Click on the &lt;strong>Slides&lt;/strong> button above to view the built-in sli
 &lt;li>&lt;strong>Upload&lt;/strong> an existing slide deck to &lt;code>static/&lt;/code> and link using &lt;code>url_slides&lt;/code> parameter in the front matter of the talk file&lt;/li>
 &lt;li>&lt;strong>Embed&lt;/strong> your slides (e.g. Google Slides) or presentation video on this page using &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">shortcodes&lt;/a>.&lt;/li>
 &lt;/ul>
-&lt;p>Further event details, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">page elements&lt;/a> such as image galleries, can be added to the body of this page.&lt;/p></description></item><item><title>On the Properties of Path Additions for Traffic Routing</title><link>https://matteobettini.github.io/publication/on-the-properties-of-path-additions-for-traffic-routing/</link><pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/publication/on-the-properties-of-path-additions-for-traffic-routing/</guid><description/></item><item><title>Welcome to Wowchemy, the website builder for Hugo</title><link>https://matteobettini.github.io/post/getting-started/</link><pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/post/getting-started/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Further event details, including &lt;a href="https://wowchemy.com/docs/writing-markdown-latex/" target="_blank" rel="noopener">page elements&lt;/a> such as image galleries, can be added to the body of this page.&lt;/p></description></item><item><title>VMAS: A Vectorized Multi-Agent Simulator for Collective Robot Learning</title><link>https://matteobettini.github.io/publication/vmas-a-vectorized-multi-agent-simulator-for-collective-robot-learning/</link><pubDate>Mon, 11 Jul 2022 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/publication/vmas-a-vectorized-multi-agent-simulator-for-collective-robot-learning/</guid><description>&lt;h1 id="scenarios">Scenarios&lt;/h1>
+&lt;figure id="figure-multi-robot-scenarios-introduced-in-vmas-robots-blue-shapes-interact-among-each-other-and-with-landmarks-green-red-and-black-shapes-to-solve-a-task">
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="Multi-robot scenarios introduced in VMAS. Robots (blue shapes) interact among each other and with landmarks (green, red, and black shapes) to solve a task."
+src="https://matteobettini.github.io/publication/vmas-a-vectorized-multi-agent-simulator-for-collective-robot-learning/VMAS_scenarios.gif"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
+Multi-robot scenarios introduced in VMAS. Robots (blue shapes) interact among each other and with landmarks (green, red, and black shapes) to solve a task.
+&lt;/figcaption>&lt;/figure>
+&lt;h1 id="video">Video&lt;/h1>
+&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+&lt;iframe src="https://www.youtube.com/embed/aaDRYfiesAY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video">&lt;/iframe>
+&lt;/div></description></item><item><title>On the Properties of Path Additions for Traffic Routing</title><link>https://matteobettini.github.io/publication/on-the-properties-of-path-additions-for-traffic-routing/</link><pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/publication/on-the-properties-of-path-additions-for-traffic-routing/</guid><description/></item><item><title>Welcome to Wowchemy, the website builder for Hugo</title><link>https://matteobettini.github.io/post/getting-started/</link><pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/post/getting-started/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;ol>
 &lt;li>The Wowchemy website builder for Hugo, along with its starter templates, is designed for professional creators, educators, and teams/organizations - although it can be used to create any kind of site&lt;/li>
 &lt;li>The template can be modified and customised to suit your needs. It&amp;rsquo;s a good platform for anyone looking to take control of their data and online identity whilst having the convenience to start off with a &lt;strong>no-code solution (write in Markdown and customize with YAML parameters)&lt;/strong> and having &lt;strong>flexibility to later add even deeper personalization with HTML and CSS&lt;/strong>&lt;/li>
@@ -150,7 +162,7 @@ data.head()
 &lt;p>Academic supports the popular &lt;a href="https://plot.ly/" target="_blank" rel="noopener">Plotly&lt;/a> chart format.&lt;/p>
 &lt;p>Save your Plotly JSON in your page folder, for example &lt;code>chart.json&lt;/code>, and then add the &lt;code>{{&amp;lt; chart data=&amp;quot;chart&amp;quot; &amp;gt;}}&lt;/code> shortcode where you would like the chart to appear.&lt;/p>
 &lt;p>Demo:&lt;/p>
-&lt;div id="chart-458726913" class="chart">&lt;/div>
+&lt;div id="chart-874359261" class="chart">&lt;/div>
 &lt;script>
 (function() {
 let a = setInterval( function() {
@@ -159,7 +171,7 @@ return;
 }
 clearInterval( a );
 Plotly.d3.json("./line-chart.json", function(chart) {
-Plotly.plot('chart-458726913', chart.data, chart.layout, {responsive: true});
+Plotly.plot('chart-874359261', chart.data, chart.layout, {responsive: true});
 });
 }, 500 );
 })();
