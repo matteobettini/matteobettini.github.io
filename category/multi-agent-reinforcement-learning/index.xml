@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Multi-Agent Reinforcement Learning | Matteo Bettini</title><link>https://matteobettini.github.io/category/multi-agent-reinforcement-learning/</link><atom:link href="https://matteobettini.github.io/category/multi-agent-reinforcement-learning/index.xml" rel="self" type="application/rss+xml"/><description>Multi-Agent Reinforcement Learning</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 11 Jul 2022 00:00:00 +0000</lastBuildDate><image><url>https://matteobettini.github.io/media/icon_hueab793ca17b85ea7e4569d22d387be97_25680_512x512_fill_lanczos_center_3.png</url><title>Multi-Agent Reinforcement Learning</title><link>https://matteobettini.github.io/category/multi-agent-reinforcement-learning/</link></image><item><title>VMAS: A Vectorized Multi-Agent Simulator for Collective Robot Learning</title><link>https://matteobettini.github.io/publication/vmas-a-vectorized-multi-agent-simulator-for-collective-robot-learning/</link><pubDate>Mon, 11 Jul 2022 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/publication/vmas-a-vectorized-multi-agent-simulator-for-collective-robot-learning/</guid><description>&lt;h1 id="scenarios">Scenarios&lt;/h1>
+&lt;figure id="figure-multi-robot-scenarios-introduced-in-vmas-robots-blue-shapes-interact-among-each-other-and-with-landmarks-green-red-and-black-shapes-to-solve-a-task">
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="Multi-robot scenarios introduced in VMAS. Robots (blue shapes) interact among each other and with landmarks (green, red, and black shapes) to solve a task."
+src="https://matteobettini.github.io/publication/vmas-a-vectorized-multi-agent-simulator-for-collective-robot-learning/VMAS_scenarios.gif"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;figcaption>
+Multi-robot scenarios introduced in VMAS. Robots (blue shapes) interact among each other and with landmarks (green, red, and black shapes) to solve a task.
+&lt;/figcaption>&lt;/figure>
+&lt;h1 id="video">Video&lt;/h1>
+&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+&lt;iframe src="https://www.youtube.com/embed/aaDRYfiesAY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video">&lt;/iframe>
+&lt;/div></description></item></channel></rss>
