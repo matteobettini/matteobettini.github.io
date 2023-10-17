@@ -417,7 +417,7 @@ You can just run the scripts in this folder to automatically use the proposed hy
 &lt;a href="https://api.wandb.ai/links/benchmarl/xf5h3p3m">
 &lt;img src=https://img.shields.io/badge/Benchmarks-Wandb-yellow />
 &lt;/a>&lt;/div>
-In the following, we report a table of the results:
+&lt;p>In the following, we report a table of the results:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
