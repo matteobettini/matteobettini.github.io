@@ -1,1 +1,408 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts | Matteo Bettini</title><link>https://matteobettini.github.io/post/</link><atom:link href="https://matteobettini.github.io/post/index.xml" rel="self" type="application/rss+xml"/><description>Posts</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><image><url>https://matteobettini.github.io/media/icon_hueab793ca17b85ea7e4569d22d387be97_25680_512x512_fill_lanczos_center_3.png</url><title>Posts</title><link>https://matteobettini.github.io/post/</link></image></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts | Matteo Bettini</title><link>https://matteobettini.github.io/post/</link><atom:link href="https://matteobettini.github.io/post/index.xml" rel="self" type="application/rss+xml"/><description>Posts</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 05 Dec 2021 00:00:00 +0000</lastBuildDate><image><url>https://matteobettini.github.io/media/icon_hueab793ca17b85ea7e4569d22d387be97_25680_512x512_fill_lanczos_center_3.png</url><title>Posts</title><link>https://matteobettini.github.io/post/</link></image><item><title>BenchMARL - Benchmarking Multi-Agent Reinforcement Learning</title><link>https://matteobettini.github.io/post/benchmarl/</link><pubDate>Sun, 05 Dec 2021 00:00:00 +0000</pubDate><guid>https://matteobettini.github.io/post/benchmarl/</guid><description>&lt;!-- ![BenchMARL](https://github.com/matteobettini/vmas-media/blob/main/media/benchmarl.png?raw=true) -->
+&lt;p>&lt;strong>TL;DR:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>We introduce BenchMARL, a training library for benchmarking MARL algorithms, tasks, and models backed by TorchRL.&lt;/li>
+&lt;li>BenchMARL already contains a variety of SOTA algorithms and tasks.&lt;/li>
+&lt;li>BenchMARL is grounded by its core tenets: standardization and reproducibility&lt;/li>
+&lt;/ul>
+&lt;h1 id="what-is-benchmarl-">What is BenchMARL 🧐?&lt;/h1>
+&lt;p>BenchMARL is a Multi-Agent Reinforcement Learning (MARL) training library created to enable reproducibility
+and benchmarking across different MARL algorithms and environments.
+Its mission is to present a standardized interface that allows easy integration of new algorithms and environments to
+provide a fair comparison with existing solutions.
+BenchMARL uses &lt;a href="https://github.com/pytorch/rl" target="_blank" rel="noopener">TorchRL&lt;/a> as its backend, which grants it high performance
+and state-of-the-art implementations.
+It also uses &lt;a href="https://hydra.cc/docs/intro/" target="_blank" rel="noopener">hydra&lt;/a> for flexible and modular configuration,
+and its data reporting is compatible with &lt;a href="https://sites.google.com/view/marl-standard-protocol/home" target="_blank" rel="noopener">marl-eval&lt;/a>
+for standardised and statistically strong evaluations.&lt;/p>
+&lt;p>BenchMARL &lt;strong>core design tenets&lt;/strong> are:&lt;/p>
+&lt;ul>
+&lt;li>&lt;em>Reproducibility through systematical grounding and standardization of configuration&lt;/em>&lt;/li>
+&lt;li>&lt;em>Standardised and statistically-strong plotting and reporting&lt;/em>&lt;/li>
+&lt;li>&lt;em>Experiments that are independent of the algorithm, environment, and model choices&lt;/em>&lt;/li>
+&lt;li>&lt;em>Breadth over the MARL ecosystem&lt;/em>&lt;/li>
+&lt;li>&lt;em>Easy implementation of new algorithms, environments, and models&lt;/em>&lt;/li>
+&lt;li>&lt;em>Leveraging the know-how and infrastructure of &lt;a href="https://github.com/pytorch/rl" target="_blank" rel="noopener">TorchRL&lt;/a>, without reinventing the wheel&lt;/em>&lt;/li>
+&lt;/ul>
+&lt;h1 id="why-would-i-benchmarl-">Why would I BenchMARL 🤔?&lt;/h1>
+&lt;p>Why would you BenchMARL, I see you ask.
+Well, you can BenchMARL to compare different algorithms, environments, models,
+to check how your new research compares to existing ones, or if you just want to approach
+the domain and want to easily take a picture of the landscape.&lt;/p>
+&lt;h1 id="why-does-it-exist">Why does it exist?&lt;/h1>
+&lt;p>We created it because, compared to other ML domains, RL has always been more fragmented
+in terms of shared community standards, tools, and interfaces.
+In MARL, this problem is even more evident, with new libraries being frequently
+introduced that focus on specific algorithms, environments, or models. Furthermore,
+these libraries often implement components from scratch, without leveraging the know-how of
+the single-agent RL community. In fact, the great majority of components used in MARL is shared
+with single-agent RL (e.g., losses like MAPPO, models, probability distributions, replay buffers, and much more).&lt;/p>
+&lt;p>This fragmentation of the domain has led to a reproducibility crisis, recently highlighted in
+a NeurIPS paper &lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>. While authors in &lt;sup id="fnref1:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup> propose a set of tools for statistically-strong results&amp;rsquo; reporting,
+there is still the need for a standardized library to run such benchmarks.
+This is where BenchMARL comes in. Its mission is to provide a benchmarking tool for MARL,
+leveraging the components of TorchRL for a solid RL backend.&lt;/p>
+&lt;h1 id="how-do-i-use-it">How do I use it?&lt;/h1>
+&lt;h3 id="command-line">Command line&lt;/h3>
+&lt;p>Simple, to run an experiment from the command line do:&lt;/p>
+&lt;pre>&lt;code class="language-bash">python benchmarl/run.py algorithm=mappo task=vmas/balance
+&lt;/code>&lt;/pre>
+&lt;p>to run multiple experiments, a benchmark you can do:&lt;/p>
+&lt;pre>&lt;code class="language-bash">python benchmarl/run.py -m algorithm=mappo,qmix,masac task=vmas/balance,vmas/sampling seed=0,1
+&lt;/code>&lt;/pre>
+&lt;p>Multirun has many launchers supported in the backend.
+The default implementation for hydra multirun is sequential, but &lt;a href="https://hydra.cc/docs/plugins/joblib_launcher/" target="_blank" rel="noopener">parallel&lt;/a> and
+&lt;a href="https://hydra.cc/docs/plugins/submitit_launcher/" target="_blank" rel="noopener">slurm&lt;/a> launchers are also available.&lt;/p>
+&lt;h3 id="script">Script&lt;/h3>
+&lt;p>Run an experiment:&lt;/p>
+&lt;pre>&lt;code class="language-python">experiment = Experiment(
+task=VmasTask.BALANCE.get_from_yaml(),
+algorithm_config=MappoConfig.get_from_yaml(),
+model_config=MlpConfig.get_from_yaml(),
+critic_model_config=MlpConfig.get_from_yaml(),
+seed=0,
+config=ExperimentConfig.get_from_yaml(),
+)
+experiment.run()
+&lt;/code>&lt;/pre>
+&lt;p>Run a benchmark:&lt;/p>
+&lt;pre>&lt;code class="language-python">benchmark = Benchmark(
+algorithm_configs=[
+MappoConfig.get_from_yaml(),
+QmixConfig.get_from_yaml(),
+MasacConfig.get_from_yaml(),
+],
+tasks=[
+VmasTask.BALANCE.get_from_yaml(),
+VmasTask.SAMPLING.get_from_yaml(),
+],
+seeds={0, 1},
+experiment_config=ExperimentConfig.get_from_yaml(),
+model_config=MlpConfig.get_from_yaml(),
+critic_model_config=MlpConfig.get_from_yaml(),
+)
+benchmark.run_sequential()
+&lt;/code>&lt;/pre>
+&lt;h1 id="components">Components&lt;/h1>
+&lt;p>The goal of BenchMARL is to bring different MARL environments and algorithms
+under the same interfaces to enable fair and reproducible comparison and benchmarking.
+BenchMARL is a full-pipline unified training library with the goal of enabling users to run
+any comparison they want across our algorithms and tasks in just one line of code.
+To achieve this, BenchMARL interconnects components from &lt;a href="https://github.com/pytorch/rl" target="_blank" rel="noopener">TorchRL&lt;/a>,
+which provides an efficient and reliable backend.&lt;/p>
+&lt;p>The library has a &lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/conf" target="_blank" rel="noopener">default configuration&lt;/a> for each of its components.
+While parts of this configuration are supposed to be changed (for example experiment configurations),
+other parts (such as tasks) should not be changed to allow for reproducibility.
+To aid in this, each version of BenchMARL is paired to a default configuration.&lt;/p>
+&lt;p>Let&amp;rsquo;s now introduce each component in the library.&lt;/p>
+&lt;p>&lt;strong>Experiment&lt;/strong>. An experiment is a training run in which an algorithm, a task, and a model are fixed.
+Experiments are configured by passing these values alongside a seed and the experiment hyperparameters.
+The experiment &lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/conf/experiment/base_experiment.yaml" target="_blank" rel="noopener">hyperparameters&lt;/a> cover both
+on-policy and off-policy algorithms, discrete and continuous actions, and probabilistic and deterministic policies
+(as they are agnostic of the algorithm or task used).
+An experiment can be launched from the command line or from a script.&lt;/p>
+&lt;p>&lt;strong>Benchmark&lt;/strong>. In the library we call &lt;code>benchmark&lt;/code> a collection of experiments that can vary in tasks, algorithm, or model.
+A benchmark shares the same experiment configuration across all of its experiments.
+Benchmarks allow to compare different MARL components in a standardized way.
+A benchmark can be launched from the command line or from a script.&lt;/p>
+&lt;p>&lt;strong>Algorithms&lt;/strong>. Algorithms are an ensemble of components (e.g., losss, replay buffer) which
+determine the training strategy. Here is a table with the currently implemented algorithms in BenchMARL.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Name&lt;/th>
+&lt;th>On/Off policy&lt;/th>
+&lt;th>Actor-critic&lt;/th>
+&lt;th>Full-observability in critic&lt;/th>
+&lt;th>Action compatibility&lt;/th>
+&lt;th>Probabilistic actor&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;a href="https://arxiv.org/abs/2103.01955" target="_blank" rel="noopener">MAPPO&lt;/a>&lt;/td>
+&lt;td>On&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>Continuous + Discrete&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://arxiv.org/abs/2011.09533" target="_blank" rel="noopener">IPPO&lt;/a>&lt;/td>
+&lt;td>On&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>No&lt;/td>
+&lt;td>Continuous + Discrete&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://arxiv.org/abs/1706.02275" target="_blank" rel="noopener">MADDPG&lt;/a>&lt;/td>
+&lt;td>Off&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>Continuous&lt;/td>
+&lt;td>No&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/algorithms/iddpg.py" target="_blank" rel="noopener">IDDPG&lt;/a>&lt;/td>
+&lt;td>Off&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>No&lt;/td>
+&lt;td>Continuous&lt;/td>
+&lt;td>No&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/algorithms/masac.py" target="_blank" rel="noopener">MASAC&lt;/a>&lt;/td>
+&lt;td>Off&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>Continuous + Discrete&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/algorithms/isac.py" target="_blank" rel="noopener">ISAC&lt;/a>&lt;/td>
+&lt;td>Off&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>No&lt;/td>
+&lt;td>Continuous + Discrete&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://arxiv.org/abs/1803.11485" target="_blank" rel="noopener">QMIX&lt;/a>&lt;/td>
+&lt;td>Off&lt;/td>
+&lt;td>No&lt;/td>
+&lt;td>NA&lt;/td>
+&lt;td>Discrete&lt;/td>
+&lt;td>No&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://arxiv.org/abs/1706.05296" target="_blank" rel="noopener">VDN&lt;/a>&lt;/td>
+&lt;td>Off&lt;/td>
+&lt;td>No&lt;/td>
+&lt;td>NA&lt;/td>
+&lt;td>Discrete&lt;/td>
+&lt;td>No&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://www.semanticscholar.org/paper/Multi-Agent-Reinforcement-Learning%3A-Independent-Tan/59de874c1e547399b695337bcff23070664fa66e" target="_blank" rel="noopener">IQL&lt;/a>&lt;/td>
+&lt;td>Off&lt;/td>
+&lt;td>No&lt;/td>
+&lt;td>NA&lt;/td>
+&lt;td>Discrete&lt;/td>
+&lt;td>No&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Tasks&lt;/strong>. Tasks are scenarios from a specific environment which constitute the MARL
+challenge to solve.
+They differ based on many aspects, here is a table with the current environments in BenchMARL&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Environment&lt;/th>
+&lt;th>Tasks&lt;/th>
+&lt;th>Cooperation&lt;/th>
+&lt;th>Global state&lt;/th>
+&lt;th>Reward function&lt;/th>
+&lt;th>Action space&lt;/th>
+&lt;th style="text-align:center">Vectorized&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;a href="https://github.com/proroklab/VectorizedMultiAgentSimulator" target="_blank" rel="noopener">VMAS&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/conf/task/vmas" target="_blank" rel="noopener">5&lt;/a>&lt;/td>
+&lt;td>Cooperative + Competitive&lt;/td>
+&lt;td>No&lt;/td>
+&lt;td>Shared + Independent + Global&lt;/td>
+&lt;td>Continuous + Discrete&lt;/td>
+&lt;td style="text-align:center">Yes&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://github.com/oxwhirl/smacv2" target="_blank" rel="noopener">SMACv2&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/conf/task/smacv2" target="_blank" rel="noopener">15&lt;/a>&lt;/td>
+&lt;td>Cooperative&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>Global&lt;/td>
+&lt;td>Discrete&lt;/td>
+&lt;td style="text-align:center">No&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://github.com/openai/multiagent-particle-envs" target="_blank" rel="noopener">MPE&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/conf/task/pettingzoo" target="_blank" rel="noopener">8&lt;/a>&lt;/td>
+&lt;td>Cooperative + Competitive&lt;/td>
+&lt;td>Yes&lt;/td>
+&lt;td>Shared + Independent&lt;/td>
+&lt;td>Continuous + Discrete&lt;/td>
+&lt;td style="text-align:center">No&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://github.com/sisl/MADRL" target="_blank" rel="noopener">SISL&lt;/a>&lt;/td>
+&lt;td>&lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/conf/task/pettingzoo" target="_blank" rel="noopener">2&lt;/a>&lt;/td>
+&lt;td>Cooperative&lt;/td>
+&lt;td>No&lt;/td>
+&lt;td>Shared&lt;/td>
+&lt;td>Continuous&lt;/td>
+&lt;td style="text-align:center">No&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>BenchMARL uses the &lt;a href="https://github.com/pytorch/rl/issues/1463" target="_blank" rel="noopener">TorchRL MARL API&lt;/a> for grouping agents.
+In competitive environments like MPE, for example, teams will be in different groups. Each group has its own loss,
+models, buffers, and so on. Parameter sharing options refer to sharing within the group. See the example on &lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/examples/extending/algorithm/custom_algorithm.py" target="_blank" rel="noopener">creating
+a custom algorithm&lt;/a> for more info.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Models&lt;/strong>. Models are neural networks used to process data. They can be used as actors (policies) or,
+when requested, as critics. We provide a set of base models (layers) and a SequenceModel to concatenate
+different layers. All the models can be used with or without parameter sharing within an
+agent group. Here is a table of the models implemented in BenchMARL&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Name&lt;/th>
+&lt;th style="text-align:center">Decentralized&lt;/th>
+&lt;th style="text-align:center">Centralized with local inputs&lt;/th>
+&lt;th style="text-align:center">Centralized with global input&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/models/mlp.py" target="_blank" rel="noopener">MLP&lt;/a>&lt;/td>
+&lt;td style="text-align:center">Yes&lt;/td>
+&lt;td style="text-align:center">Yes&lt;/td>
+&lt;td style="text-align:center">Yes&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>And the ones that are &lt;em>work in progress&lt;/em>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Name&lt;/th>
+&lt;th style="text-align:center">Decentralized&lt;/th>
+&lt;th style="text-align:center">Centralized with local inputs&lt;/th>
+&lt;th style="text-align:center">Centralized with global input&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>GNN&lt;/td>
+&lt;td style="text-align:center">Yes&lt;/td>
+&lt;td style="text-align:center">Yes&lt;/td>
+&lt;td style="text-align:center">No&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>CNN&lt;/td>
+&lt;td style="text-align:center">Yes&lt;/td>
+&lt;td style="text-align:center">Yes&lt;/td>
+&lt;td style="text-align:center">Yes&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h1 id="features">Features&lt;/h1>
+&lt;p>BenchMARL has many features. In this section we will dive deep
+in the features that correspond to our core design tenets, but there are many more cool
+nuggets here and there, such as:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>A test CI&lt;/strong> with integration and training test routines that are run &lt;strong>for all simulators and algorithms&lt;/strong>&lt;/li>
+&lt;li>Integration in the &lt;strong>official TorchRL ecosystem&lt;/strong> for dedicated support&lt;/li>
+&lt;li>Experiment &lt;strong>checkpointing&lt;/strong> and restoring using &lt;code>torch&lt;/code>&lt;/li>
+&lt;li>Experiment &lt;strong>logging&lt;/strong> compatible with many loggers (wandb, csv, mflow, tensorboard).
+The wandb logger is fully compatible with experiment restoring and will automatically resume the run of the loaded experiment.&lt;/li>
+&lt;/ul>
+&lt;p>In the following we illustrate the features which are core to our tenets.&lt;/p>
+&lt;h2 id="fine-tuned-public-benchmarks">Fine-tuned public benchmarks&lt;/h2>
+&lt;p>In the &lt;a href="https://github.com/facebookresearch/BenchMARL/blob/main/fine_tuned" target="_blank" rel="noopener">fine_tuned&lt;/a> folder
+we are collecting some tested hyperparameters for
+specific environments to enable users to bootstrap their benchmarking.
+You can just run the scripts in this folder to automatically use the proposed hyperparameters.&lt;/p>
+&lt;p>We will tune benchmarks for you and publish the config and benchmarking plots on
+&lt;a href="https://wandb.ai/benchmarl/public/reportlist" target="_blank" rel="noopener">Wandb&lt;/a> publicly&lt;/p>
+&lt;p>Currently available ones are:&lt;/p>
+&lt;div class="row">
+&lt;b>VVMAS:&lt;/b>
+&lt;a href="https://github.com/facebookresearch/BenchMARL/blob/main/fine_tuned/vmas/conf/config.yaml">
+&lt;img src=https://img.shields.io/badge/Conf-purple.svg />
+&lt;/a>
+&lt;a href="https://api.wandb.ai/links/benchmarl/xf5h3p3m">
+&lt;img src=https://img.shields.io/badge/Benchmarks-Wandb-yellow />
+&lt;/a>&lt;/div>
+In the following, we report a table of the results:
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>&lt;p align="center">Environment&lt;/p>&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>&lt;p align="center">Sample efficiency curves (all tasks)&lt;/p>&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>&lt;p align="center">Performance profile&lt;/p>&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>&lt;p align="center">Aggregate scores&lt;/p>&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>VMAS&lt;/td>
+&lt;td>&lt;img src="https://drive.google.com/uc?export=view&amp;id=1fzfFn0q54gsALRAwmqD1hRTqQIadGPoE"/>&lt;/td>
+&lt;td>&lt;img src="https://drive.google.com/uc?export=view&amp;id=151pSR2sBluSpWiYxtq3jNX0tfE0vgAuR"/>&lt;/td>
+&lt;td>&lt;img src="https://drive.google.com/uc?export=view&amp;id=1q2So9V6sL8NHMtj6vL-S3KyzZi11Vfia"/>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="reporting-and-plotting">Reporting and plotting&lt;/h2>
+&lt;p>Reporting and plotting is compatible with &lt;a href="https://github.com/instadeepai/marl-eval" target="_blank" rel="noopener">marl-eval&lt;/a>.
+If &lt;code>experiment.create_json=True&lt;/code> (this is the default in the &lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/conf/experiment/base_experiment.yaml" target="_blank" rel="noopener">experiment config&lt;/a>)
+a file named &lt;code>{experiment_name}.json&lt;/code> will be created in the experiment output folder with the format of &lt;a href="https://github.com/instadeepai/marl-eval" target="_blank" rel="noopener">marl-eval&lt;/a>.
+You can load and merge these files using the utils in &lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/eval_results.py" target="_blank" rel="noopener">eval_results&lt;/a> to create beautiful plots of
+your benchmarks. No more struggling with matplotlib and latex!&lt;/p>
+&lt;p>&lt;img src="https://drive.google.com/uc?export=view&amp;amp;id=1q2So9V6sL8NHMtj6vL-S3KyzZi11Vfia" alt="aggregate_scores">
+&lt;img src="https://drive.google.com/uc?export=view&amp;amp;id=1fzfFn0q54gsALRAwmqD1hRTqQIadGPoE" alt="sample_efficiancy">
+&lt;img src="https://drive.google.com/uc?export=view&amp;amp;id=151pSR2sBluSpWiYxtq3jNX0tfE0vgAuR" alt="performace_profile">&lt;/p>
+&lt;h2 id="configuring">Configuring&lt;/h2>
+&lt;p>The project can be configured either the script itself or via &lt;a href="https://hydra.cc/docs/intro/" target="_blank" rel="noopener">hydra&lt;/a>.
+Each component in the project has a corresponding yaml configuration in the BenchMARL
+&lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/conf" target="_blank" rel="noopener">conf&lt;/a> tree.
+Components&amp;rsquo; configurations are loaded from these files into python dataclasses that act as schemas for
+validation of parameter names and types. That way we keep the best of both words: separation of all
+configuration from code and strong typing for validation! You can also directly load and validate
+configuration yaml files without using hydra from a script by calling &lt;code>ComponentConfig.get_from_yaml()&lt;/code>.&lt;/p>
+&lt;p>Here are some examples on how you can override configurations:&lt;/p>
+&lt;h4 id="experiments">Experiments&lt;/h4>
+&lt;pre>&lt;code class="language-bash">python benchmarl/run.py task=vmas/balance algorithm=mappo experiment.lr=0.03 experiment.evaluation=true experiment.train_device=&amp;quot;cpu&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;h4 id="algorithms">Algorithms&lt;/h4>
+&lt;pre>&lt;code class="language-bash">python benchmarl/run.py task=vmas/balance algorithm=masac algorithm.num_qvalue_nets=3 algorithm.target_entropy=auto algorithm.share_param_critic=true
+&lt;/code>&lt;/pre>
+&lt;h4 id="tasks">Tasks&lt;/h4>
+&lt;p>Be careful, for benchmarking stability this is not suggested.&lt;/p>
+&lt;pre>&lt;code class="language-bash">python benchmarl/run.py task=vmas/balance algorithm=mappo task.n_agents=4
+&lt;/code>&lt;/pre>
+&lt;h4 id="models">Models&lt;/h4>
+&lt;pre>&lt;code class="language-bash">python benchmarl/run.py task=vmas/balance algorithm=mappo model=sequence &amp;quot;model.intermediate_sizes=[256]&amp;quot; &amp;quot;model/layers@model.layers.l1=mlp&amp;quot; &amp;quot;model/layers@model.layers.l2=mlp&amp;quot; &amp;quot;+model/layers@model.layers.l3=mlp&amp;quot; &amp;quot;model.layers.l3.num_cells=[3]&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>Check out the &lt;a href="https://github.com/facebookresearch/BenchMARL#configuring" target="_blank" rel="noopener">section on how to configure BenchMARL&lt;/a> and
+our &lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/examples/configuring" target="_blank" rel="noopener">examples&lt;/a>.&lt;/p>
+&lt;h2 id="extending">Extending&lt;/h2>
+&lt;p>One of the core tenets of BenchMARL is allowing users to leverage the existing algorithm
+and tasks implementations to benchmark their newly proposed solution.&lt;/p>
+&lt;p>For this reason we expose standard interfaces with simple abstract methods
+for &lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/algorithms/common.py" target="_blank" rel="noopener">algorithms&lt;/a>,
+&lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/environments/common.py" target="_blank" rel="noopener">tasks&lt;/a> and
+&lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/models/common.py" target="_blank" rel="noopener">models&lt;/a>.
+To introduce your solution in the library, you just need to implement the abstract methods
+exposed by these base classes which use objects from the &lt;a href="https://github.com/pytorch/rl" target="_blank" rel="noopener">TorchRL&lt;/a> library.&lt;/p>
+&lt;p>Here is an &lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/examples/extending/algorithm" target="_blank" rel="noopener">example on how you can create a custom algorithm&lt;/a>.&lt;/p>
+&lt;p>Here is an &lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/examples/extending/task" target="_blank" rel="noopener">example on how you can create a custom task&lt;/a>.&lt;/p>
+&lt;p>Here is an &lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/examples/extending/model" target="_blank" rel="noopener">example on how you can create a custom model&lt;/a>.&lt;/p>
+&lt;h1 id="next-steps">Next steps&lt;/h1>
+&lt;p>BenchMARL is just born and is constantly looking for collaborators to extend and improve its capabilities.
+&lt;strong>If you are interested in joining the project, please reach out!&lt;/strong>&lt;/p>
+&lt;p>The next steps will include extending the library as well as fine-tuning sets of benchmark hyperparameters
+to make them available to the community.&lt;/p>
+&lt;div class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1">
+&lt;p>&lt;em>Gorsane, Rihab, et al. &amp;ldquo;Towards a standardised performance evaluation protocol
+for cooperative marl.&amp;rdquo; Advances in Neural Information Processing Systems 35 (2022): 5510-5521.&lt;/em>&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&amp;#160;&lt;a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item></channel></rss>
