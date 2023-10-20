@@ -318,14 +318,14 @@ we are collecting some tested hyperparameters for
 specific environments to enable users to bootstrap their benchmarking.
 You can just run the scripts in this folder to automatically use the proposed hyperparameters.&lt;/p>
 &lt;p>We will tune benchmarks for you and publish the config and benchmarking plots on
-&lt;a href="https://wandb.ai/benchmarl/public/reportlist" target="_blank" rel="noopener">Wandb&lt;/a> publicly&lt;/p>
+&lt;a href="https://wandb.ai/matteobettini/benchmarl-public/reportlist" target="_blank" rel="noopener">Wandb&lt;/a> publicly&lt;/p>
 &lt;p>Currently available ones are:&lt;/p>
 &lt;div class="row">
 &lt;b>VVMAS:&lt;/b>
 &lt;a href="https://github.com/facebookresearch/BenchMARL/blob/main/fine_tuned/vmas/conf/config.yaml">
 &lt;img src=https://img.shields.io/badge/Conf-purple.svg />
 &lt;/a>
-&lt;a href="https://api.wandb.ai/links/benchmarl/xf5h3p3m">
+&lt;a href="https://api.wandb.ai/links/matteobettini/r5744vas">
 &lt;img src=https://img.shields.io/badge/Benchmarks-Wandb-yellow />
 &lt;/a>&lt;/div>
 &lt;p>In the following, we report a table of the results:&lt;/p>
