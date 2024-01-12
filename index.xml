@@ -430,9 +430,9 @@ You can just run the scripts in this folder to automatically use the proposed hy
 &lt;tbody>
 &lt;tr>
 &lt;td>VMAS&lt;/td>
-&lt;td>&lt;img src="https://drive.google.com/uc?export=view&amp;id=1fzfFn0q54gsALRAwmqD1hRTqQIadGPoE"/>&lt;/td>
-&lt;td>&lt;img src="https://drive.google.com/uc?export=view&amp;id=151pSR2sBluSpWiYxtq3jNX0tfE0vgAuR"/>&lt;/td>
-&lt;td>&lt;img src="https://drive.google.com/uc?export=view&amp;id=1q2So9V6sL8NHMtj6vL-S3KyzZi11Vfia"/>&lt;/td>
+&lt;td>&lt;img src="https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/benchmarl_sphinx_theme/static/img/benchmarks/vmas/environemnt_sample_efficiency_curves.png"/>&lt;/td>
+&lt;td>&lt;img src="https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/benchmarl_sphinx_theme/static/img/benchmarks/vmas/performance_profile_figure.png"/>&lt;/td>
+&lt;td>&lt;img src="https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/benchmarl_sphinx_theme/static/img/benchmarks/vmas/aggregate_scores.png"/>&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -442,9 +442,9 @@ If &lt;code>experiment.create_json=True&lt;/code> (this is the default in the &l
 a file named &lt;code>{experiment_name}.json&lt;/code> will be created in the experiment output folder with the format of &lt;a href="https://github.com/instadeepai/marl-eval" target="_blank" rel="noopener">marl-eval&lt;/a>.
 You can load and merge these files using the utils in &lt;a href="https://github.com/facebookresearch/BenchMARL/tree/main/benchmarl/eval_results.py" target="_blank" rel="noopener">eval_results&lt;/a> to create beautiful plots of
 your benchmarks. No more struggling with matplotlib and latex!&lt;/p>
-&lt;p>&lt;img src="https://drive.google.com/uc?export=view&amp;amp;id=1q2So9V6sL8NHMtj6vL-S3KyzZi11Vfia" alt="aggregate_scores">
-&lt;img src="https://drive.google.com/uc?export=view&amp;amp;id=1fzfFn0q54gsALRAwmqD1hRTqQIadGPoE" alt="sample_efficiancy">
-&lt;img src="https://drive.google.com/uc?export=view&amp;amp;id=151pSR2sBluSpWiYxtq3jNX0tfE0vgAuR" alt="performace_profile">&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/benchmarl_sphinx_theme/static/img/benchmarks/vmas/aggregate_scores.png" alt="aggregate_scores">
+&lt;img src="https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/benchmarl_sphinx_theme/static/img/benchmarks/vmas/environemnt_sample_efficiency_curves.png" alt="sample_efficiancy">
+&lt;img src="https://raw.githubusercontent.com/matteobettini/benchmarl_sphinx_theme/master/benchmarl_sphinx_theme/static/img/benchmarks/vmas/performance_profile_figure.png" alt="performace_profile">&lt;/p>
 &lt;h2 id="configuring">Configuring&lt;/h2>
 &lt;p>The project can be configured either the script itself or via &lt;a href="https://hydra.cc/docs/intro/" target="_blank" rel="noopener">hydra&lt;/a>.
 Each component in the project has a corresponding yaml configuration in the BenchMARL
